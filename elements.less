@@ -249,11 +249,11 @@
 	background-image: linear-gradient(left top, @g1 0%, @g2 55%, fade(@g2, 0%) 55%, fade(@g2, 0%) 100%);
 }
 /* Turn a node into a font-awesome icon node */
-.fawesomize(@w: 1em) {
+.fawesomize(@w: 1em, @i: '\F05E') {
 	display: inline-block;
 
 	font-family: 'FontAwesome';
-	content: '\F05E'; // default icon
+	content: @i;
 	font-size: @w;
 	width: @w; height: @w;
 	font-weight: normal; font-style: normal;
