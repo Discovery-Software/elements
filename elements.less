@@ -4,7 +4,23 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
 .gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
   background: @color;
   background: -webkit-gradient(linear,
@@ -186,6 +202,24 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+.icon(@c: 'X', @s: 24px) {
+	position: absolute; display: block;
+	font-size: @s; font-family: FontAwesome;
+	content: @c;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
 .nurp(@w: 15px, @h: 15px, @g1: #fff, @g2: #fff, @bc: #aaa, @bw: 1px, @l: 45%, @bg: transparent) {
 	content: " ";
 	width: @w; height: @h;
@@ -213,4 +247,24 @@
 	/* IE6?IE9 */
 	filter: ~"progid:DXImageTransform.Microsoft.gradient(gradientType=0,startColorstr=#00FFFFFF,endColorstr=#77FFFFFF)";
 	background-image: linear-gradient(left top, @g1 0%, @g2 55%, fade(@g2, 0%) 55%, fade(@g2, 0%) 100%);
+}
+/* Turn a node into a font-awesome icon node */
+.fawesomize(@w: 1em, @i: '\F05E') {
+	display: inline-block;
+
+	font-family: 'FontAwesome';
+	content: @i;
+	font-size: @w;
+	width: @w; height: @w;
+	font-weight: normal; font-style: normal;
+	-webkit-font-smoothing: antialiased;
+
+	line-height: normal;
+	vertical-align: middle; text-align: center;
+
+	text-decoration: inherit;
+	speak: none;
+
+	color: inherit;
+	background: transparent;
 }
